@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginBottom="@dimen/small_padding"
+    android:background="#9AB3F5"
+    android:id="@+id/peersLayout">
+
+    <TextView
+        android:id="@+id/peerIdTextView"
+        style="@style/header_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/small_padding"/>
+
+</LinearLayout>

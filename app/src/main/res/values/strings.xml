@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">StudyPlanner</string>
+
+    <string name="add_subject">Add/Edit Subject</string>
+    <string name="hint_subject">Subject</string>
+    <string name="button_save">Save</string>
+    <string name="empty_not_saved">Data was not saved.</string>
+    <string name="all_subjects">All Subjects</string>
+
+    <string name="study_partner">Study Partner</string>
+    <string name="start_connection">Start bluetooth</string>
+    <string name="stop_connection">Stop bluetooth</string>
+    <string name="peers_title">no study partners online</string>
+    <string name="exam_date">Exam date</string>
+    <string name="add_topic">Add/Edit Topic</string>
+    <string name="topic_date">Date</string>
+    <string name="duration">Duration (in minutes)</string>
+    <string name="button_complete">Mark as completed</string>
+    <string name="no_topics">No topics added yet.</string>
+    <string name="no_subjects">Nothing planned yet. Start by adding subjects.</string>
+    <string name="add_a_new_subject">Add a new subject</string>
+    <string name="error">An error occurred. Please try again.</string>
+    <string name="dateError">An error occurred while trying to set the date.</string>
+    <string name="title_today">Today</string>
+    <string name="title_future">Upcoming</string>
+    <string name="title_select_topics">Select topics to send:</string>
+</resources>

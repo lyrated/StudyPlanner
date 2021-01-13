@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context="com.studyplanner.gui.topics.TopicsActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/title_today"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:layout_marginHorizontal="@dimen/big_padding"
+                android:layout_marginTop="@dimen/small_padding"
+                android:text="@string/title_today"
+                android:visibility="visible" />
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginHorizontal="@dimen/big_padding"
+                android:layout_marginTop="@dimen/small_padding"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintTop_toBottomOf="@+id/title_today" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/topic_today_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/big_padding"
+                tools:listitem="@layout/recyclerview_item" />
+
+            <TextView
+                android:id="@+id/title_future"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:layout_marginHorizontal="@dimen/big_padding"
+                android:layout_marginTop="@dimen/small_padding"
+                android:text="@string/title_future"
+                android:visibility="visible" />
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_marginHorizontal="@dimen/big_padding"
+                android:layout_marginTop="@dimen/small_padding"
+                android:background="@android:color/darker_gray"
+                app:layout_constraintTop_toBottomOf="@+id/title_future" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/topic_future_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/big_padding"
+                tools:listitem="@layout/recyclerview_item" />
+
+            <Button
+                android:id="@+id/emptyView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/darker_gray"
+                android:paddingHorizontal="@dimen/small_padding"
+                android:layout_marginTop="50dp"
+                android:text="@string/no_topics"
+                android:textColor="@color/buttonLabel"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:contentDescription="@string/add_subject"
+            app:srcCompat="@drawable/ic_baseline_add_24"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
