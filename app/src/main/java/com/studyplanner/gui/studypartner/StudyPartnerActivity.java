@@ -60,6 +60,7 @@ public class StudyPartnerActivity extends StudyPartnerRootActivity {
     private HashMap<Topic, Subject> topicsToSend = new HashMap<>();
 
     private TextView peerListTextView;
+    private StringBuilder peerString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,11 +93,11 @@ public class StudyPartnerActivity extends StudyPartnerRootActivity {
         this.setTopicList();
 
         peerListTextView = findViewById(R.id.text_peers_list);
-        StringBuilder sb = new StringBuilder();
-        sb.append("\n");
-        sb.append("My ID: ");
-        sb.append(this.getASAPApplication().getOwnerID());
-        peerListTextView.setText(sb.toString());
+        peerString = new StringBuilder();
+        peerString.append("\n");
+        peerString.append("My ID: ");
+        peerString.append(this.getASAPApplication().getOwnerID());
+        peerListTextView.setText(peerString.toString());
     }
 
     @Override
@@ -151,7 +152,7 @@ public class StudyPartnerActivity extends StudyPartnerRootActivity {
         LinearLayout peerListLayout = findViewById(R.id.show_recipients_layout);
 
         StringBuilder sb = new StringBuilder();
-        sb.append(peerListTextView.getText());
+        sb.append(peerString);
         sb.append("\n");
 
         if(onlinePeerList == null || onlinePeerList.size() < 1) {
