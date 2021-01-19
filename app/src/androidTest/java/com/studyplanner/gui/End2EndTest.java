@@ -2,8 +2,6 @@ package com.studyplanner.gui;
 
 
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
 
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.filters.LargeTest;
@@ -13,9 +11,6 @@ import androidx.test.runner.AndroidJUnit4;
 import com.studyplanner.R;
 import com.studyplanner.gui.topics.TopicsActivity;
 
-import org.hamcrest.Description;
-import org.hamcrest.Matcher;
-import org.hamcrest.TypeSafeMatcher;
 import org.hamcrest.core.IsInstanceOf;
 import org.junit.Rule;
 import org.junit.Test;
@@ -32,6 +27,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static com.studyplanner.gui.GuiTestUtil.*;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.is;
 
@@ -45,7 +41,7 @@ public class End2EndTest {
     @Test
     public void end2EndTest() {
         ViewInteraction actionMenuItemView = onView(
-                allOf(withId(R.id.all_subjects), withContentDescription("All Subjects"),
+                allOf(withId(R.id.all_subjects), withContentDescription(R.string.all_subjects),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.action_bar),
@@ -54,8 +50,14 @@ public class End2EndTest {
                         isDisplayed()));
         actionMenuItemView.perform(click());
 
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         ViewInteraction textView = onView(
-                allOf(withText("All Subjects"),
+                allOf(withText(R.string.all_subjects),
                         childAtPosition(
                                 allOf(withId(R.id.action_bar),
                                         childAtPosition(
@@ -63,10 +65,10 @@ public class End2EndTest {
                                                 0)),
                                 0),
                         isDisplayed()));
-        textView.check(matches(withText("All Subjects")));
+        textView.check(matches(withText(R.string.all_subjects)));
 
         ViewInteraction actionMenuItemView2 = onView(
-                allOf(withId(R.id.new_subject), withContentDescription("Add/Edit Subject"),
+                allOf(withId(R.id.new_subject), withContentDescription(R.string.add_subject),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.action_bar),
@@ -74,6 +76,12 @@ public class End2EndTest {
                                 0),
                         isDisplayed()));
         actionMenuItemView2.perform(click());
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         ViewInteraction appCompatEditText = onView(
                 allOf(withId(R.id.edit_subject),
@@ -83,7 +91,13 @@ public class End2EndTest {
                                         0),
                                 1),
                         isDisplayed()));
-        appCompatEditText.perform(replaceText("A"), closeSoftKeyboard());
+        appCompatEditText.perform(replaceText(SUBJECT_NAME), closeSoftKeyboard());
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         ViewInteraction appCompatEditText2 = onView(
                 allOf(withId(R.id.edit_exam_date),
@@ -93,10 +107,16 @@ public class End2EndTest {
                                         0),
                                 3),
                         isDisplayed()));
-        appCompatEditText2.perform(replaceText("22.2.2021"), closeSoftKeyboard());
+        appCompatEditText2.perform(replaceText(SUBJECT_DATE_ENTERED), closeSoftKeyboard());
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         ViewInteraction materialButton = onView(
-                allOf(withId(R.id.button_save), withText("Save"),
+                allOf(withId(R.id.button_save), withText(R.string.button_save),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
@@ -105,8 +125,14 @@ public class End2EndTest {
                         isDisplayed()));
         materialButton.perform(click());
 
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         ViewInteraction textView2 = onView(
-                allOf(withId(R.id.itemTextView), withText("A"),
+                allOf(withId(R.id.itemTextView), withText(SUBJECT_NAME),
                         childAtPosition(
                                 allOf(withId(R.id.layoutItem),
                                         childAtPosition(
@@ -114,10 +140,10 @@ public class End2EndTest {
                                                 0)),
                                 0),
                         isDisplayed()));
-        textView2.check(matches(withText("A")));
+        textView2.check(matches(withText(SUBJECT_NAME)));
 
         ViewInteraction textView3 = onView(
-                allOf(withId(R.id.detailsTextView), withText("Mon, 22.02.21"),
+                allOf(withId(R.id.detailsTextView), withText(SUBJECT_DATE),
                         childAtPosition(
                                 allOf(withId(R.id.layoutItem),
                                         childAtPosition(
@@ -125,7 +151,7 @@ public class End2EndTest {
                                                 0)),
                                 1),
                         isDisplayed()));
-        textView3.check(matches(withText("Mon, 22.02.21")));
+        textView3.check(matches(withText(SUBJECT_DATE)));
 
         ViewInteraction appCompatImageButton = onView(
                 allOf(withContentDescription("Navigate up"),
@@ -138,8 +164,14 @@ public class End2EndTest {
                         isDisplayed()));
         appCompatImageButton.perform(click());
 
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         ViewInteraction actionMenuItemView3 = onView(
-                allOf(withId(R.id.new_topic), withContentDescription("Add/Edit Topic"),
+                allOf(withId(R.id.new_topic), withContentDescription(R.string.add_topic),
                         childAtPosition(
                                 childAtPosition(
                                         withId(R.id.action_bar),
@@ -147,6 +179,12 @@ public class End2EndTest {
                                 2),
                         isDisplayed()));
         actionMenuItemView3.perform(click());
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         ViewInteraction appCompatEditText3 = onView(
                 allOf(withId(R.id.edit_topic),
@@ -156,7 +194,13 @@ public class End2EndTest {
                                         0),
                                 1),
                         isDisplayed()));
-        appCompatEditText3.perform(replaceText("study"), closeSoftKeyboard());
+        appCompatEditText3.perform(replaceText(TOPIC_NAME_OLD), closeSoftKeyboard());
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         ViewInteraction appCompatEditText4 = onView(
                 allOf(withId(R.id.edit_date),
@@ -166,7 +210,13 @@ public class End2EndTest {
                                         0),
                                 3),
                         isDisplayed()));
-        appCompatEditText4.perform(replaceText("14.1.2021"), closeSoftKeyboard());
+        appCompatEditText4.perform(replaceText(TOPIC_DATE_ENTERED), closeSoftKeyboard());
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         ViewInteraction appCompatEditText5 = onView(
                 allOf(withId(R.id.edit_duration),
@@ -176,10 +226,16 @@ public class End2EndTest {
                                         0),
                                 7),
                         isDisplayed()));
-        appCompatEditText5.perform(replaceText("60"), closeSoftKeyboard());
+        appCompatEditText5.perform(replaceText(TOPIC_DURATION), closeSoftKeyboard());
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         ViewInteraction materialButton2 = onView(
-                allOf(withId(R.id.button_save_topic), withText("Save"),
+                allOf(withId(R.id.button_save_topic), withText(R.string.button_save),
                         childAtPosition(
                                 childAtPosition(
                                         withClassName(is("android.widget.LinearLayout")),
@@ -188,8 +244,14 @@ public class End2EndTest {
                         isDisplayed()));
         materialButton2.perform(click());
 
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         ViewInteraction textView4 = onView(
-                allOf(withText("StudyPlanner"),
+                allOf(withText(R.string.app_name),
                         childAtPosition(
                                 allOf(withId(R.id.action_bar),
                                         childAtPosition(
@@ -197,10 +259,10 @@ public class End2EndTest {
                                                 0)),
                                 0),
                         isDisplayed()));
-        textView4.check(matches(withText("StudyPlanner")));
+        textView4.check(matches(withText(R.string.app_name)));
 
         ViewInteraction textView5 = onView(
-                allOf(withId(R.id.itemTextView), withText("[A] study"),
+                allOf(withId(R.id.itemTextView), withText(TOPIC_DISPLAYED),
                         childAtPosition(
                                 allOf(withId(R.id.layoutItem),
                                         childAtPosition(
@@ -208,10 +270,10 @@ public class End2EndTest {
                                                 0)),
                                 0),
                         isDisplayed()));
-        textView5.check(matches(withText("[A] study")));
+        textView5.check(matches(withText(TOPIC_DISPLAYED)));
 
         ViewInteraction textView6 = onView(
-                allOf(withId(R.id.detailsTextView), withText("60 min | Thu, 14.01.21"),
+                allOf(withId(R.id.detailsTextView), withText(TOPIC_DETAILS),
                         childAtPosition(
                                 allOf(withId(R.id.layoutItem),
                                         childAtPosition(
@@ -219,7 +281,7 @@ public class End2EndTest {
                                                 0)),
                                 1),
                         isDisplayed()));
-        textView6.check(matches(withText("60 min | Thu, 14.01.21")));
+        textView6.check(matches(withText(TOPIC_DETAILS)));
 
         ViewInteraction linearLayout = onView(
                 allOf(withId(R.id.layoutItem),
@@ -230,8 +292,14 @@ public class End2EndTest {
                                 0)));
         linearLayout.perform(scrollTo(), click());
 
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         ViewInteraction textView7 = onView(
-                allOf(withText("Add/Edit Topic"),
+                allOf(withText(R.string.add_topic),
                         childAtPosition(
                                 allOf(withId(R.id.action_bar),
                                         childAtPosition(
@@ -239,31 +307,43 @@ public class End2EndTest {
                                                 0)),
                                 0),
                         isDisplayed()));
-        textView7.check(matches(withText("Add/Edit Topic")));
+        textView7.check(matches(withText(R.string.add_topic)));
 
         ViewInteraction appCompatEditText6 = onView(
-                allOf(withId(R.id.edit_topic), withText("study"),
+                allOf(withId(R.id.edit_topic), withText(TOPIC_NAME_OLD),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
                                         0),
                                 1),
                         isDisplayed()));
-        appCompatEditText6.check(matches(withText("study")));
+        appCompatEditText6.check(matches(withText(TOPIC_NAME_OLD)));
         appCompatEditText6.perform(click());
 
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         ViewInteraction appCompatEditText7 = onView(
-                allOf(withId(R.id.edit_topic), withText("study"),
+                allOf(withId(R.id.edit_topic), withText(TOPIC_NAME_OLD),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
                                         0),
                                 1),
                         isDisplayed()));
-        appCompatEditText7.perform(replaceText("Homework"));
+        appCompatEditText7.perform(replaceText(TOPIC_NAME_NEW));
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         ViewInteraction appCompatEditText8 = onView(
-                allOf(withId(R.id.edit_topic), withText("Homework"),
+                allOf(withId(R.id.edit_topic), withText(TOPIC_NAME_NEW),
                         childAtPosition(
                                 childAtPosition(
                                         withId(android.R.id.content),
@@ -272,8 +352,14 @@ public class End2EndTest {
                         isDisplayed()));
         appCompatEditText8.perform(closeSoftKeyboard());
 
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         ViewInteraction materialButton3 = onView(
-                allOf(withId(R.id.button_save_topic), withText("Save"),
+                allOf(withId(R.id.button_save_topic), withText(R.string.button_save),
                         childAtPosition(
                                 childAtPosition(
                                         withClassName(is("android.widget.LinearLayout")),
@@ -282,8 +368,14 @@ public class End2EndTest {
                         isDisplayed()));
         materialButton3.perform(click());
 
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
         ViewInteraction textView8 = onView(
-                allOf(withId(R.id.itemTextView), withText("[A] Homework"),
+                allOf(withId(R.id.itemTextView), withText(TOPIC_DISPLAYED),
                         childAtPosition(
                                 allOf(withId(R.id.layoutItem),
                                         childAtPosition(
@@ -291,7 +383,7 @@ public class End2EndTest {
                                                 0)),
                                 0),
                         isDisplayed()));
-        textView8.check(matches(withText("[A] Homework")));
+        textView8.check(matches(withText(TOPIC_DISPLAYED)));
 
         ViewInteraction appCompatImageView = onView(
                 allOf(withId(R.id.img_delete_item),
@@ -304,7 +396,7 @@ public class End2EndTest {
         appCompatImageView.perform(click());
 
         try {
-            Thread.sleep(200);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -313,24 +405,5 @@ public class End2EndTest {
                 allOf(withId(R.id.emptyView),
                         isDisplayed()));
         button.check(matches(isDisplayed()));
-    }
-
-    private static Matcher<View> childAtPosition(
-            final Matcher<View> parentMatcher, final int position) {
-
-        return new TypeSafeMatcher<View>() {
-            @Override
-            public void describeTo(Description description) {
-                description.appendText("Child at position " + position + " in parent ");
-                parentMatcher.describeTo(description);
-            }
-
-            @Override
-            public boolean matchesSafely(View view) {
-                ViewParent parent = view.getParent();
-                return parent instanceof ViewGroup && parentMatcher.matches(parent)
-                        && view.equals(((ViewGroup) parent).getChildAt(position));
-            }
-        };
     }
 }
