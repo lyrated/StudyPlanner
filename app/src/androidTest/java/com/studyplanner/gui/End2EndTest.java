@@ -262,7 +262,7 @@ public class End2EndTest {
         textView4.check(matches(withText(R.string.app_name)));
 
         ViewInteraction textView5 = onView(
-                allOf(withId(R.id.itemTextView), withText(TOPIC_DISPLAYED),
+                allOf(withId(R.id.itemTextView), withText(TOPIC_DISPLAYED_OLD),
                         childAtPosition(
                                 allOf(withId(R.id.layoutItem),
                                         childAtPosition(
@@ -270,7 +270,7 @@ public class End2EndTest {
                                                 0)),
                                 0),
                         isDisplayed()));
-        textView5.check(matches(withText(TOPIC_DISPLAYED)));
+        textView5.check(matches(withText(TOPIC_DISPLAYED_OLD)));
 
         ViewInteraction textView6 = onView(
                 allOf(withId(R.id.detailsTextView), withText(TOPIC_DETAILS),
@@ -375,7 +375,7 @@ public class End2EndTest {
         }
 
         ViewInteraction textView8 = onView(
-                allOf(withId(R.id.itemTextView), withText(TOPIC_DISPLAYED),
+                allOf(withId(R.id.itemTextView), withText(TOPIC_DISPLAYED_NEW),
                         childAtPosition(
                                 allOf(withId(R.id.layoutItem),
                                         childAtPosition(
@@ -383,7 +383,7 @@ public class End2EndTest {
                                                 0)),
                                 0),
                         isDisplayed()));
-        textView8.check(matches(withText(TOPIC_DISPLAYED)));
+        textView8.check(matches(withText(TOPIC_DISPLAYED_NEW)));
 
         ViewInteraction appCompatImageView = onView(
                 allOf(withId(R.id.img_delete_item),

@@ -15,7 +15,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".gui.topics.TopicsActivity" />
         </activity>
-        <activity android:name=".gui.studypartner.StudyPartnerActivity" />
+        <activity android:name=".gui.studypartner.StudyPartnerActivity"
+            android:label="Study Partner"/>
         <activity android:name=".gui.studypartner.StudyPartnerInitialActivity" />
         <activity
             android:name=".gui.subjects.EditSubjectActivity"

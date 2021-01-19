@@ -17,7 +17,8 @@ public class GuiTestUtil {
     public final static String TOPIC_NAME_NEW = "Homework";
     public final static String TOPIC_DATE_ENTERED = "28.1.2021";
     public final static String TOPIC_DURATION = "60";
-    public final static String TOPIC_DISPLAYED = "[Maths] study";
+    public final static String TOPIC_DISPLAYED_OLD = "[Maths] study";
+    public final static String TOPIC_DISPLAYED_NEW = "[Maths] Homework";
     public final static String TOPIC_DETAILS = "60 min | Thu, 28.01.21";
 
     public static Matcher<View> childAtPosition(
